@@ -1,0 +1,2 @@
+# TypeScript Pokedex
+WIP:
