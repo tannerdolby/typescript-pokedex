@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Tenali+Ramakrishna&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montaga&display=swap');
 
 :root {
     --google-font-tenali: 'Tenali Ramakrishna', sans-serif;
+    --google-font-montaga: 'Montaga', sans-serif;
     --pokemon-yellow: #F4D03F;
     --poke-yellow: #F7DC6F;
     --box-shadow: 1px 1px 1px rgab(0, 0, 0, 0.2);
@@ -33,7 +35,7 @@ main {
     text-transform: uppercase;
     font-style: italic;
     color: var(--pokemon-yellow);
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     /* -webkit-text-fill-color: var(--pokemon-yellow); */
     -webkit-text-fill-color: var(--pokemon-yellow);
     -webkit-text-stroke-color: #1A5276;
@@ -48,6 +50,7 @@ main {
 }
 
 #app {
+    margin-top: 40px;
     display: grid;
     /* grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); */
     /* grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); */
@@ -116,6 +119,8 @@ main {
     display: flex;
     justify-content: center;
     align-self: center;
+    font-family: var(--google-font-montaga);
+    font-size: 2rem;
 }
 
 .poke-card .card-image {
