@@ -145,7 +145,65 @@ main {
   font-size: 1.2rem;
 }
 
+#search-bar {
+    padding: 8px 8px;
+    border-radius: 4px;
+    font-size: 1.1rem;
+}
 
+#submit-btn {
+    border-radius: 4px;
+    margin: 5px;
+    margin-left: 10px;
+    background: #222;
+    padding: 0;
+}
+
+#searchClick {
+    /* padding: 4px 4px 4px 4px; */
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    width: 100%;
+    padding: 6px 10px 6px 10px;
+    border-radius: 4px;
+}
+
+
+#clear-search {
+    display: block;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 6px;
+    background: #222;
+    color: white;
+    font-size: 0.9rem;
+}
+
+#searchClick:hover {
+    background: #444;
+}
+
+#clear-search:hover {
+    background: #444;
+}
+
+
+/* #clear-search {
+    border-radius: 4px;
+    margin: 5px;
+    margin-left: 10px;
+    padding: 3px 6px;
+    background: #222;
+    color: white;
+} */
+
+main #search-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
 
