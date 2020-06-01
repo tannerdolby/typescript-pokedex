@@ -63,19 +63,45 @@ const displayPokemon = (pokemon: any) => {
 };
 fetchPokemon();
 
-// function to iterate through all json response up until the number of pokemon specified to fetch
-const hitAPI = (): void => {
-  for (let i = 1; i <= pokemonToFetch; i++) {
-    mySearchFetch(i);
-  }
-};
+const searchBar: HTMLElement | any = document.body.querySelector("#search-bar");
+const searchBtn: HTMLElement | any = document.body.querySelector("#submit-btn");
+const anchorSearch: HTMLElement | any = document.body.querySelector("#searchClick");
+const clearSearch: HTMLElement | any = document.body.querySelector("#clear-search");
 
-// fetches a single pokemon or response result from poke api
-const mySearchFetch = async (id: number): Promise<void> => {
-  const fetcher: Response = await fetch(
-    `https://pokeapi.co/api/v2/pokemon/${id}`
-  );
-  const pokemon: any = await fetcher.json();
-  return pokemon;
-};
-hitAPI();
+const mySearchStuff = (): void => {
+    let inputStr = "";
+    searchBar.addEventListener("keyup", (e: any) => {
+        inputStr = e.target.value;
+        console.log(inputStr);
+    });
+    clearSearch.addEventListener("click", () => {
+        searchBar.value = "";
+    })
+
+    let promiseArr = [];
+    for (let i = 1; i <= pokemonToFetch; i++) {
+        let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
+        promiseArr.push(fetch(url).then((data: any) => data.json()))
+    }
+    Promise.all(promiseArr).then((data: any) => {
+        const pokemon: any =  data
+            .map((poke: any) => ({
+                name: poke.name.slice(0,1).toUpperCase().concat(poke.name.slice(1).toLowerCase()),
+                id: poke.id,
+                height: poke.height,
+                weight: poke.weight,
+            }))
+        
+        // console.log(pokemon);
+        searchBtn.addEventListener("click", () => {
+            let names = pokemon.map((val: any) => val.name);
+            for (let i = 0; i <= pokemonToFetch; i++) {
+                if (inputStr === names[i]) {
+                    anchorSearch.href = `#${names[i]}`;
+                }
+            }
+        })
+
+    })
+}
+mySearchStuff();

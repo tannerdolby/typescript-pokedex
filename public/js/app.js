@@ -1,13 +1,4 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 const container = document.body.querySelector("#app");
 // const searchBar: HTMLElement | any = document.body.querySelector("#searchBar");
 // const searchBtn: HTMLElement | any = document.body.querySelector("#search-btn");
@@ -67,16 +58,41 @@ const displayPokemon = (pokemon) => {
     container.innerHTML = pokemonHTMLString;
 };
 fetchPokemon();
-// function to iterate through all json response up until the number of pokemon specified to fetch
-const hitAPI = () => {
+const searchBar = document.body.querySelector("#search-bar");
+const searchBtn = document.body.querySelector("#submit-btn");
+const anchorSearch = document.body.querySelector("#searchClick");
+const clearSearch = document.body.querySelector("#clear-search");
+const mySearchStuff = () => {
+    let inputStr = "";
+    searchBar.addEventListener("keyup", (e) => {
+        inputStr = e.target.value;
+        console.log(inputStr);
+    });
+    clearSearch.addEventListener("click", () => {
+        searchBar.value = "";
+    });
+    let promiseArr = [];
     for (let i = 1; i <= pokemonToFetch; i++) {
-        mySearchFetch(i);
+        let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
+        promiseArr.push(fetch(url).then((data) => data.json()));
     }
+    Promise.all(promiseArr).then((data) => {
+        const pokemon = data
+            .map((poke) => ({
+            name: poke.name.slice(0, 1).toUpperCase().concat(poke.name.slice(1).toLowerCase()),
+            id: poke.id,
+            height: poke.height,
+            weight: poke.weight,
+        }));
+        // console.log(pokemon);
+        searchBtn.addEventListener("click", () => {
+            let names = pokemon.map((val) => val.name);
+            for (let i = 0; i <= pokemonToFetch; i++) {
+                if (inputStr === names[i]) {
+                    anchorSearch.href = `#${names[i]}`;
+                }
+            }
+        });
+    });
 };
-// fetches a single pokemon or response result from poke api
-const mySearchFetch = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const fetcher = yield fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-    const pokemon = yield fetcher.json();
-    return pokemon;
-});
-hitAPI();
+mySearchStuff();
