@@ -73,6 +73,7 @@ const mySearchStuff = (): void => {
     });
     clearSearch.addEventListener("click", () => {
         searchBar.value = "";
+        anchorSearch.href = "";
     })
 
     let promiseArr = [];
