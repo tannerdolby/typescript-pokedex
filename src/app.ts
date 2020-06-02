@@ -1,6 +1,4 @@
 const container: HTMLElement | any = document.body.querySelector("#app");
-// const searchBar: HTMLElement | any = document.body.querySelector("#searchBar");
-// const searchBtn: HTMLElement | any = document.body.querySelector("#search-btn");
 const pokemonToFetch: number = 151;
 
 const newPokeImg = function(pokeID: any) {
@@ -72,7 +70,6 @@ const mySearchStuff = (): void => {
     let inputStr = "";
     searchBar.addEventListener("keyup", (e: any) => {
         inputStr = e.target.value;
-        console.log(inputStr);
     });
     clearSearch.addEventListener("click", () => {
         searchBar.value = "";
