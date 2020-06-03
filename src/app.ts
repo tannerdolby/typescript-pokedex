@@ -1,5 +1,9 @@
 const container: HTMLElement | any = document.body.querySelector("#app");
 const pokemonToFetch: number = 151;
+const searchBar: HTMLElement | any = document.body.querySelector("#search-bar");
+const searchBtn: HTMLElement | any = document.body.querySelector("#submit-btn");
+const anchorSearch: HTMLElement | any = document.body.querySelector("#searchClick");
+const clearSearch: HTMLElement | any = document.body.querySelector("#clear-search");
 
 const newPokeImg = function(pokeID: any) {
   let src = `https://pokeres.bastionbot.org/images/pokemon/${pokeID}.png`;
@@ -60,11 +64,6 @@ const displayPokemon = (pokemon: any) => {
   container.innerHTML = pokemonHTMLString;
 };
 fetchPokemon();
-
-const searchBar: HTMLElement | any = document.body.querySelector("#search-bar");
-const searchBtn: HTMLElement | any = document.body.querySelector("#submit-btn");
-const anchorSearch: HTMLElement | any = document.body.querySelector("#searchClick");
-const clearSearch: HTMLElement | any = document.body.querySelector("#clear-search");
 
 const mySearchStuff = (): void => {
     let inputStr = "";
