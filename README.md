@@ -1,4 +1,4 @@
-<img width="1242" alt="repo-img" src="https://user-images.githubusercontent.com/48612525/83675404-cd351000-a58d-11ea-971f-9fa5bf1eda38.png">
+<img width="1221" alt="repoImg" src="https://user-images.githubusercontent.com/48612525/83679747-c1008100-a594-11ea-8f4a-2f68e2b8da4b.png">
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
