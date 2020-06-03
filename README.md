@@ -33,7 +33,7 @@ This project is free for open-source use. See the [LICENSE.md](LICENSE.md) file 
 
 ## Acknowledgments
 
-* Ibrahima Nadwa - Thank you [@ibrahima92](https://github.com/ibrahima92)! 
+* Ibrahima Ndaw - Thank you [@ibrahima92](https://github.com/ibrahima92)! 
 * My inspiration for this project stemmed seeing @ibrahima92's finished TypeScript Pokedex and how cool it looked. 
 
 
