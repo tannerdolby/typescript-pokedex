@@ -23,7 +23,7 @@ const fetchPokemon = () => {
                 .slice(0, 1)
                 .toUpperCase()
                 .concat(result.name.slice(1).toLowerCase()),
-            type: result.types.map((poke) => poke.type.name),
+            type: result.types.map((poke) => poke.type.name).join(", "),
             image: newPokeImg(result.id),
             weight: result.weight,
             height: result.height,
@@ -33,11 +33,12 @@ const fetchPokemon = () => {
                 .join(" "),
             stat: result.stats
                 .map((poke) => poke.stat.name)
-                .slice(result.stats.length - 1)
+                .slice(0, 1)
                 .join(" ")
                 .toUpperCase()
         }))
             .sort((a, b) => a.id - b.id);
+        console.log(pokemon[1].stat);
         displayPokemon(pokemon);
     });
 };
@@ -51,7 +52,7 @@ const displayPokemon = (pokemon) => {
             </div>
             <h1 class="card-name">${pokemon.name}</h1>
             <img class="card-image" src=${pokemon.image} alt=${pokemon.name} />
-            <span class="card-details">${pokemon.type} type pokemon</span>
+            <span class="card-details">${pokemon.type} type</span>
             <span>Length: ${pokemon.height} in, Weight: ${pokemon.weight} lbs.</span>
             <!-- <span>Abilities: ${pokemon.abilities}</span> -->
         </div>
