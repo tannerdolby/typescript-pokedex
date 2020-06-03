@@ -3,14 +3,12 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 # TypeScript Pokedex
-After reading through a guide on building a Pokedex using TypeScript. I decided to take my project to the next level and add more features until I was happy with its functionality. This TypeScript Pokedex displays a responsive CSS grid of Pokemon Cards, each card contains minimal information about the Pokemon details. At the top of the page, the search bar allows you to lookup any pokemon by its name listed on the card. 
+After reading through a guide on building a Pokedex using TypeScript. I decided to take my project to the next level and add more features until I was happy with its functionality. This TypeScript Pokedex displays a responsive CSS grid of Pokemon cards, each card contains minimal information about the Pokemon details. At the top of the page, the search bar allows you to lookup any pokemon by its name listed on the card. 
 
 ### What is TypeScript?
 TypeScript is an open-source programming language developed and maintained by Microsoft. It is a strict syntactical superset of JavaScript and adds optional static typing to the language. It offers more control over your code since it uses optional static type checking to throw errors at compile-time rather than at run-time like dynamically typed languages such as JavaScript. 
 
 ## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 View the project live in a sandbox environment here [Codesandbox.io](https://codesandbox.io/s/typescript-pokedex-5nb34)
 
@@ -23,7 +21,7 @@ View the project live in a sandbox environment here [Codesandbox.io](https://cod
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/tannercd/typescript-pokedex/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Authors
 
