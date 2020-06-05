@@ -149,6 +149,7 @@ main {
     padding: 8px 8px;
     border-radius: 4px;
     font-size: 1.1rem;
+    border: 1px solid #DDD;
 }
 
 #submit-btn {
@@ -156,11 +157,11 @@ main {
     margin: 5px;
     margin-left: 10px;
     background: #222;
+    border: 1px solid #DDD;
     padding: 0;
 }
 
 #searchClick {
-    /* padding: 4px 4px 4px 4px; */
     display: inline-block;
     color: white;
     text-decoration: none;
@@ -170,7 +171,6 @@ main {
     border-radius: 4px;
 }
 
-
 #clear-search {
     display: block;
     cursor: pointer;
@@ -179,6 +179,7 @@ main {
     background: #222;
     color: white;
     font-size: 0.9rem;
+    border: 1px solid #DDD;
 }
 
 #searchClick:hover {
