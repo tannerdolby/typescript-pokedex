@@ -64,6 +64,7 @@ fetchPokemon();
 const mySearchStuff = () => {
     let inputStr = "";
     searchBar.addEventListener("keyup", (e) => {
+        e.preventDefault();
         inputStr = e.target.value;
     });
     clearSearch.addEventListener("click", () => {
@@ -90,6 +91,9 @@ const mySearchStuff = () => {
                 if (inputStr === names[i]) {
                     anchorSearch.href = `#${names[i]}`;
                 }
+            }
+            if (inputStr === "") {
+                anchorSearch.href = "#";
             }
         });
     });
