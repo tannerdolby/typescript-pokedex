@@ -10,7 +10,7 @@ TypeScript is an open-source programming language developed and maintained by Mi
 
 ## Getting Started
 
-View the project live in a sandbox environment here [Codesandbox.io](https://codesandbox.io/s/typescript-pokedex-5nb34)
+View the project live in a sandbox environment here: https://codesandbox.io/s/typescript-pokedex-5nb34
 
 
 ## Built With
@@ -34,6 +34,6 @@ This project is free for public and open-source use.
 ## Acknowledgments
 
 * Ibrahima Ndaw - Thank you [@ibrahima92](https://github.com/ibrahima92)! 
-* My inspiration for this project stemmed seeing @ibrahima92's finished TypeScript Pokedex and how cool it looked. 
+* My inspiration for this project stemmed from seeing @ibrahima92's finished TypeScript Pokedex and how cool it looked!
 
 
