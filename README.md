@@ -29,7 +29,7 @@ Please read [CONTRIBUTING.md](https://github.com/tannercd/typescript-pokedex/blo
 
 ## License
 
-This project is free for open-source use. See the [LICENSE.md](LICENSE.md) file for details.
+This project is free for public and open-source use. 
 
 ## Acknowledgments
 
