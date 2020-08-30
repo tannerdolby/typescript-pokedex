@@ -6,7 +6,7 @@
   --google-font-montaga: "Montaga", sans-serif;
   --pokemon-yellow: #f4d03f;
   --poke-yellow: #f7dc6f;
-  --box-shadow: 1px 1px 1px rgab(0, 0, 0, 0.2);
+  --box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 * {
