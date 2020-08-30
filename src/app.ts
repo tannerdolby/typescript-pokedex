@@ -39,7 +39,7 @@ const fetchPokemon = () => {
           .toUpperCase()
       }))
       .sort((a: any, b: any) => a.id - b.id);
-      console.log(pokemon[1].stat);
+      // console.log(pokemon[1].stat);
     displayPokemon(pokemon);
   });
 };
