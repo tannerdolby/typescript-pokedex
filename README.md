@@ -23,14 +23,6 @@ View the project live in a sandbox environment here: https://codesandbox.io/s/ty
 
 Please read [CONTRIBUTING.md](https://github.com/tannercd/typescript-pokedex/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
-## Authors
-
-* **Tanner Dolby** - *Initial work* - [tannercd](https://github.com/tannercd)
-
-## License
-
-This project is free for public and open-source use. 
-
 ## Acknowledgments
 
 * Ibrahima Ndaw - Thank you [@ibrahima92](https://github.com/ibrahima92)! 
