@@ -15,9 +15,9 @@ TypeScript is an open-source programming language developed and maintained by Mi
 
 ## Built With
 
-* [TypeScript](http://www.dropwizard.io/1.0.2/docs/) - typed superset of JavaScript that compiles to plain JS
-* [HTML](https://maven.apache.org/) - Markup language for web page
-* [CSS](https://rometools.github.io/rome/) - Style sheets
+* [TypeScript](https://www.typescriptlang.org/docs/) - typed superset of JavaScript that compiles to plain JS
+* [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) - Markup language for web page
+* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) - Style sheets
 
 ## Contributing
 
