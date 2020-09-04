@@ -54,7 +54,7 @@ const displayPokemon = (pokemon: any) => {
                 <span class="card-hp">${pokemon.base_stat} ${pokemon.stat} <i id="poke-hp" class="fa fa-heart" aria-hidden="true"></i></span>
             </div>
             <h1 class="card-name">${pokemon.name}</h1>
-            <img class="card-image" src=${pokemon.image} alt=${pokemon.name} />
+            <img class="card-image" src=${pokemon.image} alt=${pokemon.name} loading="lazy" />
             <span class="card-details">${pokemon.type} type</span>
             <span>Length: ${pokemon.height} in, Weight: ${pokemon.weight} lbs.</span>
             <!-- <span>Abilities: ${pokemon.abilities}</span> -->
