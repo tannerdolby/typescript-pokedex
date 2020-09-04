@@ -198,3 +198,8 @@ main #search-div {
 
 
 
+@media screen and (max-width: 325px) {
+  #search-bar {
+    max-width: 150px;
+  }
+}
