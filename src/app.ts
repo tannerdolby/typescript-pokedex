@@ -39,7 +39,6 @@ const fetchPokemon = () => {
           .toUpperCase()
       }))
       .sort((a: any, b: any) => a.id - b.id);
-      // console.log(pokemon[1].stat);
     displayPokemon(pokemon);
   });
 };
@@ -91,7 +90,6 @@ const mySearchStuff = (): void => {
                 weight: poke.weight,
             }))
         
-        // console.log(pokemon);
         searchBtn.addEventListener("click", () => {
             let names = pokemon.map((val: any) => val.name);
             for (let i = 0; i <= pokemonToFetch; i++) {
