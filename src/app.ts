@@ -13,7 +13,7 @@ const newPokeImg = function(pokeID: any) {
 const fetchPokemon = () => {
   const promises = [];
   for (let i = 1; i <= pokemonToFetch; i++) {
-    const url: string = `https://pokeapi.co/api/v2/pokemon/${i}`;
+    const url: string = `https://pokeapi.co/api/v2/pokemon/${i}/`;
     promises.push(fetch(url).then((res: any) => res.json()));
   }
   Promise.all(promises).then((results: any) => {
@@ -78,7 +78,7 @@ const mySearchStuff = (): void => {
 
     let promiseArr = [];
     for (let i = 1; i <= pokemonToFetch; i++) {
-        let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
+        let url = `https://pokeapi.co/api/v2/pokemon/${i}/`;
         promiseArr.push(fetch(url).then((data: any) => data.json()))
     }
     Promise.all(promiseArr).then((data: any) => {
