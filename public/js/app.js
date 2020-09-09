@@ -11,7 +11,7 @@ var newPokeImg = function (pokeID) {
 var fetchPokemon = function () {
     var promises = [];
     for (var i = 1; i <= pokemonToFetch; i++) {
-        var url = "https://pokeapi.co/api/v2/pokemon/" + i + "/";
+        var url = "https://pokeapi.co/api/v2/pokemon/" + i;
         promises.push(fetch(url).then(function (res) { return res.json(); }));
     }
     Promise.all(promises).then(function (results) {
@@ -59,7 +59,7 @@ var mySearchStuff = function () {
     });
     var promiseArr = [];
     for (var i = 1; i <= pokemonToFetch; i++) {
-        var url = "https://pokeapi.co/api/v2/pokemon/" + i + "/";
+        var url = "https://pokeapi.co/api/v2/pokemon/" + i;
         promiseArr.push(fetch(url).then(function (data) { return data.json(); }));
     }
     Promise.all(promiseArr).then(function (data) {
