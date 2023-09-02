@@ -3,10 +3,6 @@
 # Pokedex
 TypeScript Pokedex displays a responsive CSS grid of Pokemon cards by ID. Each card contains information about the Pokemon details.
 
-## Getting Started
-
-* Live demo - [tspokedex.netlify.app](https://tspokedex.netlify.app/)
-
 ## Contributing
 
 Please read [CONTRIBUTING.md](https://github.com/tannercd/typescript-pokedex/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
