@@ -8,50 +8,69 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 const container = document.body.querySelector('#app');
 const pokemonToFetch = 151;
-const fetchPokemon = () => __awaiter(this, void 0, void 0, function* () {
-    const promises = [];
-    for (let i = 1; i <= pokemonToFetch; i++) {
-        const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
-        promises.push(fetch(url).then((res) => res.json()));
-    }
-    const pokemonPromises = yield Promise.all(promises);
-    return pokemonPromises
-        .map((result) => ({
-        id: result.id,
-        name: result.name
+const POKEMON_BASE_URL = 'https://pokeapi.co/api/v2/pokemon/';
+function dataFetcher(url) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const res = yield fetch(url);
+            const json = yield res.json();
+            return json;
+        }
+        catch (error) {
+            throw new Error(`Unable to fetch data for url: ${url}\n${error}`);
+        }
+    });
+}
+function getPokemonCardHTML(pokemon) {
+    return `
+    <div class='poke-card' id='${pokemon.name.toLowerCase()}'>
+      <div class='flexy'>
+        <span class='card-id'>#${pokemon.id}</span>
+        <span class='card-hp'>${pokemon.base_stat} ${pokemon.stat} <i id='poke-hp' class='fa fa-heart' aria-hidden='true'></i></span>
+      </div>
+      <h1 class='card-name'>${pokemon.name}</h1>
+      <img class='card-image' src='${pokemon.image}' alt='${pokemon.name}' loading='lazy' />
+      <span class='card-details'>${pokemon.type} type</span>
+      <span style='padding: 0'>Length: ${pokemon.height} in, Weight: ${pokemon.weight} lbs.</span>
+      <span style='padding: 0 .25rem'>Abilities: ${pokemon.abilities}</span>
+    </div>
+  `;
+}
+function formatPokemonJSON(json) {
+    const id = json.id;
+    const name = json.name;
+    return ({
+        id: id,
+        name: name
             .slice(0, 1)
             .toUpperCase()
-            .concat(result.name.slice(1).toLowerCase()),
-        type: result.types.map((poke) => poke.type.name).join(', '),
-        image: result.sprites.front_default,
-        weight: result.weight,
-        height: result.height,
-        base_stat: result.stats
+            .concat(name.slice(1).toLowerCase()),
+        type: json.types.map((poke) => poke.type.name).join(', '),
+        image: json.sprites.front_default,
+        weight: json.weight,
+        height: json.height,
+        base_stat: json.stats
             .map((poke) => poke.base_stat)
-            .slice(result.stats.length - 1)
+            .slice(json.stats.length - 1)
             .join(' '),
-        stat: result.stats
+        stat: json.stats
             .map((poke) => poke.stat.name)
             .slice(0, 1)
             .join(' ')
-            .toUpperCase()
-    }))
-        .sort((a, b) => a.id - b.id);
+            .toUpperCase(),
+        abilities: json.abilities.map(item => item.ability.name).join(', '),
+    });
+}
+const fetchPokemon = () => __awaiter(this, void 0, void 0, function* () {
+    const pokemon = [];
+    for (let i = 1; i <= pokemonToFetch; i++) {
+        pokemon.push(yield dataFetcher(POKEMON_BASE_URL + i));
+    }
+    console.log('pokemon', pokemon);
+    return pokemon.map(formatPokemonJSON).sort((a, b) => a.id - b.id);
 });
 const displayPokemon = (pokemon) => {
-    const pokemonHTMLString = pokemon
-        .map((pokemon) => `
-            <div class='poke-card' id='${pokemon.name}'>
-            <div class='flexy'>
-                <span class='card-id'>#${pokemon.id}</span>
-                <span class='card-hp'>${pokemon.base_stat} ${pokemon.stat} <i id='poke-hp' class='fa fa-heart' aria-hidden='true'></i></span>
-            </div>
-            <h1 class='card-name'>${pokemon.name}</h1>
-            <img class='card-image' src=${pokemon.image} alt=${pokemon.name} loading='lazy' />
-            <span class='card-details'>${pokemon.type} type</span>
-            <span>Length: ${pokemon.height} in, Weight: ${pokemon.weight} lbs.</span>
-        </div>
-        `).join('');
+    const pokemonHTMLString = pokemon.map(getPokemonCardHTML).join('');
     if (!container)
         return;
     container.innerHTML = pokemonHTMLString;
@@ -74,7 +93,7 @@ const handleSearch = () => {
         inputStr = '';
     });
     searchBtn.addEventListener('click', () => {
-        anchorSearch.href = `#${inputStr}`;
+        anchorSearch.href = `#${inputStr.toLowerCase()}`;
     });
 };
 function main() {
