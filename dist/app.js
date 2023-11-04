@@ -66,7 +66,6 @@ const fetchPokemon = () => __awaiter(this, void 0, void 0, function* () {
     for (let i = 1; i <= pokemonToFetch; i++) {
         pokemon.push(yield dataFetcher(POKEMON_BASE_URL + i));
     }
-    console.log('pokemon', pokemon);
     return pokemon.map(formatPokemonJSON).sort((a, b) => a.id - b.id);
 });
 const displayPokemon = (pokemon) => {
