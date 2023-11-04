@@ -1,11 +1,7 @@
-<img width="1221" alt="repoImg" src="https://user-images.githubusercontent.com/48612525/83679747-c1008100-a594-11ea-8f4a-2f68e2b8da4b.png">
+<img width="1257" alt="typescript pokedex demo" src="https://github.com/tannerdolby/typescript-pokedex/assets/48612525/acfa5943-2c01-41c4-b2bb-b1fb0bceb78e">
 
 # Pokedex
 TypeScript Pokedex displays a responsive CSS grid of Pokemon cards by ID. Each card contains information about the Pokemon details.
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://github.com/tannercd/typescript-pokedex/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Acknowledgments
 

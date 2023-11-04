@@ -62,8 +62,6 @@ const fetchPokemon = async (): Promise<PokemonItemFormatted[]> => {
   for (let i = 1; i <= pokemonToFetch; i++) {
     pokemon.push(await dataFetcher(POKEMON_BASE_URL + i));
   }
-
-  console.log('pokemon', pokemon);
   
   return pokemon.map(formatPokemonJSON).sort((a, b) => a.id - b.id);
 };
