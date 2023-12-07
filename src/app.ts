@@ -1,5 +1,6 @@
 const container = document.body.querySelector('#app');
 const pokemonToFetch = 151;
+const BATCH_SIZE = 30;
 import { Pokemon, PokemonItemFormatted } from './types';
 
 const POKEMON_BASE_URL = 'https://pokeapi.co/api/v2/pokemon/';
@@ -56,20 +57,20 @@ function formatPokemonJSON(json: Pokemon): PokemonItemFormatted {
   });
 }
 
-const fetchPokemon = async (): Promise<PokemonItemFormatted[]> => {
-  const pokemon: Pokemon[] = [];
-
-  for (let i = 1; i <= pokemonToFetch; i++) {
-    pokemon.push(await dataFetcher(POKEMON_BASE_URL + i));
+const fetchPokemon = async (start: number, end:number): Promise<PokemonItemFormatted[]> => {
+  const pokemon: Array<Promise<any>> = [];
+  for (let i = start; i <= end; i++) {
+    pokemon.push(dataFetcher(POKEMON_BASE_URL + i));
   }
-  
-  return pokemon.map(formatPokemonJSON).sort((a, b) => a.id - b.id);
+  return (await Promise.all(pokemon))
+    .map(formatPokemonJSON)
+    .sort((a, b) => a.id - b.id);
 };
 
 const displayPokemon = (pokemon: PokemonItemFormatted[]) => {
   const pokemonHTMLString = pokemon.map(getPokemonCardHTML).join('');
   if (!container) return;
-  container.innerHTML = pokemonHTMLString;
+  container.innerHTML += pokemonHTMLString;
 };
 
 const handleSearch = (): void => {
@@ -98,8 +99,19 @@ const handleSearch = (): void => {
 }
 
 async function main() {
-  displayPokemon(await fetchPokemon());
   handleSearch();
+
+  let start = 1
+  let end = BATCH_SIZE;
+
+  while (start <= pokemonToFetch) {
+    if (end >= pokemonToFetch) {
+      end = pokemonToFetch;
+    }
+    displayPokemon(await fetchPokemon(start, end));
+    start += BATCH_SIZE;
+    end += BATCH_SIZE;
+  }
 }
 
 main();

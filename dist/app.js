@@ -1,13 +1,15 @@
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
 const container = document.body.querySelector('#app');
 const pokemonToFetch = 151;
+const BATCH_SIZE = 30;
 const POKEMON_BASE_URL = 'https://pokeapi.co/api/v2/pokemon/';
 function dataFetcher(url) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -61,18 +63,20 @@ function formatPokemonJSON(json) {
         abilities: json.abilities.map(item => item.ability.name).join(', '),
     });
 }
-const fetchPokemon = () => __awaiter(this, void 0, void 0, function* () {
+const fetchPokemon = (start, end) => __awaiter(void 0, void 0, void 0, function* () {
     const pokemon = [];
-    for (let i = 1; i <= pokemonToFetch; i++) {
-        pokemon.push(yield dataFetcher(POKEMON_BASE_URL + i));
+    for (let i = start; i <= end; i++) {
+        pokemon.push(dataFetcher(POKEMON_BASE_URL + i));
     }
-    return pokemon.map(formatPokemonJSON).sort((a, b) => a.id - b.id);
+    return (yield Promise.all(pokemon))
+        .map(formatPokemonJSON)
+        .sort((a, b) => a.id - b.id);
 });
 const displayPokemon = (pokemon) => {
     const pokemonHTMLString = pokemon.map(getPokemonCardHTML).join('');
     if (!container)
         return;
-    container.innerHTML = pokemonHTMLString;
+    container.innerHTML += pokemonHTMLString;
 };
 const handleSearch = () => {
     const searchBar = document.body.querySelector('#search-bar');
@@ -97,8 +101,17 @@ const handleSearch = () => {
 };
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
-        displayPokemon(yield fetchPokemon());
         handleSearch();
+        let start = 1;
+        let end = BATCH_SIZE;
+        while (start <= pokemonToFetch) {
+            if (end >= pokemonToFetch) {
+                end = pokemonToFetch;
+            }
+            displayPokemon(yield fetchPokemon(start, end));
+            start += BATCH_SIZE;
+            end += BATCH_SIZE;
+        }
     });
 }
 main();
